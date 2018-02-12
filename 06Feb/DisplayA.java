@@ -1,20 +1,42 @@
+import java.util.*;
 
-public class DisplayA implements WeatherSuscriptor, Displayable
+public class DisplayA implements Observer, Displayable
 {
 	float temperatura, humedad, viento, presion, probaLluvia;
 	double visibilidad;
 	
-	@Override
-	public void actualizar(float temperatura, float presion, float humedad, float viento, double visibilidad, float probaLluvia)
+	public DisplayA(Observable weatherData)
 	{
-		// TODO Auto-generated method stub
-		this.temperatura = temperatura;
-		this.presion = presion;
-		this.humedad = humedad;
-		this.viento = viento;
-		this.visibilidad = visibilidad;
-		this.probaLluvia = probaLluvia;
+		weatherData.addObserver(this);
 	}
+	
+	public void update(Observable observable, Object arg)
+	{
+		if (observable instanceof WeatherData)
+		{
+			WeatherData weather = (WeatherData) observable;
+			WrapperWeatherClass wrapper = (WrapperWeatherClass) arg;
+			this.temperatura = wrapper.getTemperatura();
+			this.humedad = wrapper.getHumedad();
+			this.viento = wrapper.getViento();
+			this.presion = wrapper.getPresion();
+			this.probaLluvia = wrapper.getProbaLluvia();
+			this.visibilidad = wrapper.getVisibilidad();
+			display();
+		}
+	}
+	
+//	@Override
+//	public void actualizar(float temperatura, float presion, float humedad, float viento, double visibilidad, float probaLluvia)
+//	{	
+//		this.temperatura = temperatura;
+//		this.humedad = humedad;
+//		this.presion = presion;
+//		this.viento = viento;
+//		this.probaLluvia = probaLluvia;
+//		this.visibilidad = visibilidad;
+//		display();
+//	}
 
 	@Override
 	public void display() {

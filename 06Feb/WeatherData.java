@@ -1,11 +1,45 @@
 import java.util.*;
 
-public class WeatherData implements Sujeto 
+public class WeatherData extends Observable 
 {
-	List<WeatherSuscriptor> suscriptores = new ArrayList<WeatherSuscriptor>();
 	float temperatura, presion, humedad, viento, probaLluvia;
 	double visibilidad;
-
+	
+	public WeatherData()
+	{
+		
+	}
+	
+	public float getTemperatura()
+	{
+		return this.temperatura;
+	}
+	
+	public float getPresion()
+	{
+		return this.presion;
+	}
+	
+	public float getHumedad ()
+	{
+		return this.humedad;
+	}
+	
+	public float getViento()
+	{
+		return this.viento;
+	}
+	
+	public double getVisibilidad()
+	{	
+		return this.visibilidad;
+	}
+	
+	public float getProbaLluvia()
+	{
+		return this.probaLluvia;
+	}
+	
 	public void setTemperatura(float temperatura)
 	{
 		this.temperatura = temperatura;
@@ -16,7 +50,7 @@ public class WeatherData implements Sujeto
 		this.presion = presion;
 	}
 	
-	public void setHumedad (float humedad)
+	public void setHumedad(float humedad)
 	{
 		this.humedad = humedad;
 	}
@@ -26,43 +60,30 @@ public class WeatherData implements Sujeto
 		this.viento = viento;
 	}
 	
-	public void setVisibilidad(double visibilidad)
-	{
-		this.visibilidad = visibilidad;
-	}
-	
 	public void setProbaLluvia(float probaLluvia)
 	{
 		this.probaLluvia = probaLluvia;
 	}
 	
-
-	@Override
-	public void registrarSuscriptor(WeatherSuscriptor suscriptor) 
+	public void setVisibilidad(double visibilidad)
 	{
-		// TODO Auto-generated method stub
-		suscriptores.add(suscriptor);
+		this.visibilidad = visibilidad;
 	}
-
-	@Override
-	public void borrarSuscriptor(WeatherSuscriptor suscriptor) 
+	
+	public void setMeasurements(float temperatura, float presion, float humedad, float viento, double visibilidad, float probaLluvia)
 	{
-		// TODO Auto-generated method stub
-		suscriptores.remove(suscriptor);
-	}
-
-	@Override
-	public void notificarSuscriptor() 
-	{
-		// TODO Auto-generated method stub
-		for (WeatherSuscriptor weatherSuscriptores : suscriptores)
-		{
-			weatherSuscriptores.actualizar(temperatura, presion, humedad, viento, visibilidad, probaLluvia);
-		}
+		this.temperatura = temperatura;
+		this.presion = presion;
+		this.humedad = humedad;
+		this.viento = viento;
+		this.visibilidad = visibilidad;
+		this.probaLluvia = probaLluvia;	
+		measurementChanged();
 	}
 	
 	public void measurementChanged() 
 	{
-		notificarSuscriptor();
+		setChanged();
+		notifyObservers(new WrapperWeatherClass(temperatura, presion, humedad, viento, probaLluvia, visibilidad));
 	}
 }

@@ -3,12 +3,15 @@ public class PizzaApp
 {
 	public static void main (String []args)
 	{		
-		Pizza vegetariana = new Vegetariana();
-		Pizza vegana = new Vegana();
-		Pizza mexicana = new Mexicana();
+		PizzaFactory pizzaFactory = new PizzaFactory();
 		
-		vegetariana.orderPizza(vegetariana);
-		vegana.orderPizza(vegana);
-		mexicana.orderPizza(mexicana);		
+		Pizza isela = pizzaFactory.orderPizza("vegetariana");
+		isela.pizzaMaker();
+		
+		Pizza cristian = pizzaFactory.orderPizza("mexicana");
+		cristian.pizzaMaker();
+		
+		Pizza melissa = pizzaFactory.orderPizza("vegana");
+		melissa.pizzaMaker();
 	}	
 }

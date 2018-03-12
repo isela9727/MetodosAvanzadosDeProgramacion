@@ -1,5 +1,5 @@
 
-public class Vegana extends Pizza
+public class Vegana implements Pizza
 {
 
 	@Override
@@ -30,5 +30,15 @@ public class Vegana extends Pizza
 	public void enviar() {
 		// TODO Auto-generated method stub
 		System.out.println("Enviando pizza vegana\n");
+	}
+	
+	@Override 
+	public void pizzaMaker()
+	{
+		preparar();
+		hornear();
+		cortar();
+		empacar();
+		enviar();
 	}
 }

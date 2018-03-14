@@ -1,5 +1,5 @@
 
-public class Mexicana implements Pizza
+public class Mexicana extends Pizza
 {
 
 	@Override
@@ -13,6 +13,12 @@ public class Mexicana implements Pizza
 		// TODO Auto-generated method stub
 		System.out.println("Horneando pizza mexicana");
 	}
+	
+	@Override
+	public void empacar() {
+		// TODO Auto-generated method stub
+		System.out.println("Empacando pizza mexicana");
+	}
 
 	@Override
 	public void cortar() {
@@ -21,24 +27,8 @@ public class Mexicana implements Pizza
 	}
 
 	@Override
-	public void empacar() {
-		// TODO Auto-generated method stub
-		System.out.println("Empacando pizza mexicana");
-	}
-
-	@Override
 	public void enviar() {
 		// TODO Auto-generated method stub
 		System.out.println("Enviando pizza mexicana\n");
-	}
-	
-	@Override 
-	public void pizzaMaker()
-	{
-		preparar();
-		hornear();
-		cortar();
-		empacar();
-		enviar();
 	}
 }

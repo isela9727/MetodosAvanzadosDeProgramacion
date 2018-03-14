@@ -1,13 +1,9 @@
 
-public class PizzaFactory 
+public class PizzaCetys extends PizzaStore 
 {
-	public Pizza orderPizza(String pizzaTipo)
-	{
-		if (pizzaTipo == null)
-		{
-			return null;
-		}
-		
+	@Override
+	public Pizza pizzaMaker(String pizzaTipo) {
+		// TODO Auto-generated method stub
 		if (pizzaTipo.equalsIgnoreCase("vegetariana"))
 		{
 			return new Vegetariana();

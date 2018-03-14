@@ -1,10 +1,9 @@
 
-public interface Pizza 
+public abstract class Pizza 
 {
-	public void preparar();
-	public void hornear();
-	public void cortar();
-	public void empacar();
-	public void enviar();
-	public void pizzaMaker();
+	public abstract void preparar();
+	public abstract void hornear();
+	public abstract void cortar();
+	public abstract void empacar();
+	public abstract void enviar();
 }
